@@ -32,12 +32,13 @@ public class RedisTemplateConfig {
         // 设置hash key 和value序列化模式
         //使用StringRedisSerializer来序列化和反序列化redis的key值
         redisTemplate.setHashKeySerializer(new StringRedisSerializer());
-        redisTemplate.setHashValueSerializer(new StringRedisSerializer());
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         //使用GenericJackson2JsonRedisSerializer来序列化和反序列化redis的value值（默认使用JDK的序列化方式）
         GenericJackson2JsonRedisSerializer genericJackson2JsonRedisSerializer=new GenericJackson2JsonRedisSerializer();
         // 值采用json序列化
         redisTemplate.setValueSerializer(genericJackson2JsonRedisSerializer);
+        redisTemplate.setHashValueSerializer(genericJackson2JsonRedisSerializer);
+
         if (redisConnectionFactory instanceof LettuceConnectionFactory){
             logger.info("redisConnectionFactory is LettuceConnectionFactory");
             LettuceConnectionFactory lettuceConnectionFactory= (LettuceConnectionFactory) redisConnectionFactory;

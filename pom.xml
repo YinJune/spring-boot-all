@@ -3,6 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.yjj</groupId>
+    <artifactId>spring-boot-all</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>validation</module>
+        <module>spring-boot-redis</module>
+    </modules>
+
     <!--
           spring boot 父节点依赖,
           引入这个之后相关的引入就不需要添加version配置，
@@ -14,14 +24,5 @@
         <version>2.2.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.yjj</groupId>
-    <artifactId>spring-boot-all</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>validation</module>
-        <module>spring-boot-redis</module>
-    </modules>
-
 
 </project>
