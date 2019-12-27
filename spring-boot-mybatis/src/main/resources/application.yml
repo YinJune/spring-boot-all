@@ -1,0 +1,10 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: mybatisApp
+  datasource:
+    url: jdbc://mysql://47.102.208.223:3306/meet
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
