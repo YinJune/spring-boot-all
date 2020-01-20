@@ -3,6 +3,8 @@ package com.yjj.web;
 import com.alibaba.fastjson.JSONObject;
 import com.yjj.entity.Student;
 import com.yjj.entity.User;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +18,14 @@ import java.util.List;
  * @CreateDate: 2018/9/3 16:40
  * @Version: 1.0
  */
+@Api(tags = "用户接口")
 @RestController
 @RequestMapping(value = "test")
 public class TestValidation {
 
-    @PostMapping("/post")
-    public String testPost(@RequestBody @Validated User user, HttpServletRequest request){
+    @ApiOperation(value = "添加用户value",notes = "添加用户note")
+    @PostMapping("/user/add")
+    public String addUser(@RequestBody @Validated User user, HttpServletRequest request){
         Student student=new Student();
         BeanUtils.copyProperties(user,student);
         System.out.println(JSONObject.toJSONString(student));
@@ -31,18 +35,9 @@ public class TestValidation {
         return JSONObject.toJSONString(student);
     }
 
-    @GetMapping("/get")
-    public String testGet(User user, HttpServletRequest request){
-        System.out.println(user);
-        return user.toString();
+    @ApiOperation(value = "获取用户",notes = "获取用户note")
+    @GetMapping("/user/get")
+    public String getUser(@RequestParam("userId")Integer userId, HttpServletRequest request){
+        return "success";
     }
-
-    /**
-     * @RequestBody 即使是get 也必须要加一个{}在body体
-     */
-//    @GetMapping("/get")
-//    public String testGet(@RequestBody @Validated User user, HttpServletRequest request){
-//        System.out.println(user);
-//        return user.toString();
-//    }
 }

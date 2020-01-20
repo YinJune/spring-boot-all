@@ -28,7 +28,6 @@ public class User {
     /**
      * 电话
      */
-//    @Pattern(regexp = "^1(3|4|5|7|8)\\d{9}$",message = "手机号不对")
     @Pattern(regexp = "^1[3|4|5|6|7|8|9][0-9]\\d{4,8}$", message = "手机号不对")
     private String mobile;
 
@@ -37,7 +36,7 @@ public class User {
     /**
      * 学校
      */
-    @Valid
+    @Valid //加上Valid才能校验List里边的结构
     @NotEmpty(message = "学校不能为空")
     private List<School> schoolList;
 
