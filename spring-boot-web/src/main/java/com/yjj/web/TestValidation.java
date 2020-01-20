@@ -23,21 +23,21 @@ import java.util.List;
 @RequestMapping(value = "test")
 public class TestValidation {
 
-    @ApiOperation(value = "添加用户value",notes = "添加用户note")
+    @ApiOperation(value = "添加用户value", notes = "添加用户note")
     @PostMapping("/user/add")
-    public String addUser(@RequestBody @Validated User user, HttpServletRequest request){
-        Student student=new Student();
-        BeanUtils.copyProperties(user,student);
+    public String addUser(@RequestBody @Validated User user, HttpServletRequest request) {
+        Student student = new Student();
+        BeanUtils.copyProperties(user, student);
         System.out.println(JSONObject.toJSONString(student));
-        List a=user.getSchoolList();
-        List b=student.getSchoolList();
-        System.out.println(a==b);
+        List a = user.getSchoolList();
+        List b = student.getSchoolList();
+        System.out.println(a == b);
         return JSONObject.toJSONString(student);
     }
 
-    @ApiOperation(value = "获取用户",notes = "获取用户note")
+    @ApiOperation(value = "获取用户", notes = "获取用户note")
     @GetMapping("/user/get")
-    public String getUser(@RequestParam("userId")Integer userId, HttpServletRequest request){
+    public String getUser(@RequestParam("userId") Integer userId, HttpServletRequest request) {
         return "success";
     }
 }
